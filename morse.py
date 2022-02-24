@@ -15,10 +15,12 @@ def min_voltage(): GPIO.output(pins[0], GPIO.LOW)
 def dot(): 
     max_voltage()
     time.sleep(time_unit)
+    min_voltage()
 
 def dash(): 
-    min_voltage()
+    max_voltage()
     time.sleep(3 * time_unit)
+    min_voltage()
 
 def pause(multiplier):
     time.sleep(multiplier * time_unit)
