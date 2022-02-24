@@ -14,12 +14,12 @@ def min_voltage(): GPIO.output(pins[0], GPIO.LOW)
 
 def dot(): 
     max_voltage()
-    time.sleep(time_unit)
+    pause(1)
     min_voltage()
 
 def dash(): 
     max_voltage()
-    time.sleep(3 * time_unit)
+    pause(3)
     min_voltage()
 
 def pause(multiplier):
@@ -29,6 +29,7 @@ def character_to_morse(character):
     sequence = morse_characters.get(character)
     for entry in sequence: 
         binary_to_morse.get(entry)()
+        pause(1)
 
 binary_to_morse = {0: dot, 1: dash}
 
@@ -79,8 +80,8 @@ try:
         for character in group:
             print(character)
             character_to_morse(character)
-            pause(1)
-        pause(3)
+            pause(3)
+        pause(7)
 except Exception as E:
     print(E)
     min_voltage()
