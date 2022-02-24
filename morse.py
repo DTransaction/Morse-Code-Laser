@@ -6,21 +6,16 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(pins, GPIO.OUT)
 GPIO.setwarnings(False)
 
-time_unit = 0.25
 
 def max_voltage(): GPIO.output(pins[0], GPIO.HIGH)
 
 def min_voltage(): GPIO.output(pins[0], GPIO.LOW)
 
-def dot(): 
+def laser_flash(time_units): 
     max_voltage()
+    pause(time_units)
+    min_voltage()
     pause(1)
-    min_voltage()
-
-def dash(): 
-    max_voltage()
-    pause(3)
-    min_voltage()
 
 def pause(multiplier):
     time.sleep(multiplier * time_unit)
@@ -28,10 +23,11 @@ def pause(multiplier):
 def character_to_morse(character):
     sequence = morse_characters.get(character)
     for entry in sequence: 
-        binary_to_morse.get(entry)()
-        pause(1)
+        laser_flash(binary_to_morse_timing.get(entry))
 
-binary_to_morse = {0: dot, 1: dash}
+time_unit = 0.25
+
+binary_to_morse_timing = {0: 1, 1: 3}
 
 morse_characters = {
     'a': [0, 1], 
