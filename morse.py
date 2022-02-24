@@ -6,7 +6,6 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(pins, GPIO.OUT)
 GPIO.setwarnings(False)
 
-
 def max_voltage(): GPIO.output(pins[0], GPIO.HIGH)
 
 def min_voltage(): GPIO.output(pins[0], GPIO.LOW)
@@ -24,10 +23,6 @@ def character_to_morse(character):
     sequence = morse_characters.get(character)
     for entry in sequence: 
         laser_flash(binary_to_morse_timing.get(entry))
-
-time_unit = 0.25
-
-binary_to_morse_timing = {0: 1, 1: 3}
 
 morse_characters = {
     'a': [0, 1], 
@@ -67,11 +62,14 @@ morse_characters = {
     '9': [1, 1, 1, 1, 0], 
     '0': [1, 1, 1, 1, 1]}
 
+time_unit = 0.25
 
-test_phrase = ((input("Input characters to be printed out\n> ")).lower()).split(" ")
+binary_to_morse_timing = {0: 1, 1: 3}
+
+phrase = ((input("Input characters to be printed out\n> ")).lower()).split(" ")
 
 try:
-    for group in test_phrase: 
+    for group in phrase: 
         for character in group:
             print(character)
             character_to_morse(character)
