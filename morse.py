@@ -1,13 +1,23 @@
 import time
+import RPi.GPIO as GPIO
+
+pins = [16]
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(pins, GPIO.OUT)
+GPIO.setwarnings(False)
 
 time_unit = 0.5
 
+def max_voltage(): GPIO.output(pins[0], GPIO.HIGH)
+
+def min_voltage(): GPIO.output(pins[0], GPIO.LOW)
+
 def dot(): 
-    print("dot")
+    max_voltage()
     time.sleep(time_unit)
 
 def dash(): 
-    print("dash")
+    min_voltage()
     time.sleep(3 * time_unit)
 
 def pause(multiplier):
@@ -59,7 +69,7 @@ morse_characters = {
     '0': [1, 1, 1, 1, 1]}
 
 
-test_phrase = "HELLO we are tesTing 417"
+test_phrase = "abc def"
 
 test_phrase = (test_phrase.lower()).split(" ")
 
