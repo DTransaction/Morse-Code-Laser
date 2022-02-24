@@ -16,7 +16,7 @@ def min_voltage(): GPIO.output(pins[0], GPIO.LOW)
 try: 
     for x in range(10):
         max_voltage()
-        time.sleep(0.5)
+        time.sleep(1)
         min_voltage()
 except Exception as E:
     print(E)
