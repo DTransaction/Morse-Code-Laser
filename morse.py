@@ -11,10 +11,15 @@ def max_voltage(): GPIO.output(pins[0], GPIO.HIGH)
 def min_voltage(): GPIO.output(pins[0], GPIO.LOW)
 
 def laser_flash(time_units): 
-    max_voltage()
-    pause(time_units)
-    min_voltage()
-    pause(1)
+    try:
+        max_voltage()
+        pause(time_units)
+        min_voltage()
+        pause(1)
+    except Exception as E:
+        min_voltage()
+        GPIO.cleanup()
+        print(E)
 
 def pause(multiplier):
     time.sleep(multiplier * time_unit)
