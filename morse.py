@@ -72,10 +72,14 @@ morse_characters = {
 test_phrase = "abc def"
 
 test_phrase = (test_phrase.lower()).split(" ")
-
-for group in test_phrase: 
-    for character in group:
-        print(character)
-        character_to_morse(character)
-        pause(1)
-    pause(3)
+try:
+    for group in test_phrase: 
+        for character in group:
+            print(character)
+            character_to_morse(character)
+            pause(1)
+        pause(3)
+except Exception as E:
+    print(E)
+    min_voltage()
+    GPIO.cleanup()
