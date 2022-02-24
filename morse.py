@@ -66,7 +66,7 @@ morse_characters = {
 binary_to_morse_timing = {0: 1, 1: 3}
 
 try:
-    time_unit = int(input("How long should one time unit last? Enter a number, each unit is one second.\n> "))
+    time_unit = float(input("How long should one time unit last? Enter a number, each unit is one second.\n> "))
     while True:
         phrase = ((input("Input characters to be printed out\nCTRL + C to exit\n> ")).lower()).split(" ")
         for group in phrase: 
