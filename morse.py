@@ -6,7 +6,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(pins, GPIO.OUT)
 GPIO.setwarnings(False)
 
-time_unit = 0.5
+time_unit = 0.25
 
 def max_voltage(): GPIO.output(pins[0], GPIO.HIGH)
 
@@ -72,7 +72,7 @@ morse_characters = {
     '0': [1, 1, 1, 1, 1]}
 
 
-test_phrase = "abc def"
+test_phrase = input("Input characters to be printed out\n> ")
 
 test_phrase = (test_phrase.lower()).split(" ")
 try:
