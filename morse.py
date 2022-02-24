@@ -10,18 +10,18 @@ def max_voltage(): GPIO.output(pins[0], GPIO.HIGH)
 
 def min_voltage(): GPIO.output(pins[0], GPIO.LOW)
 
-def laser_flash(time_units): 
+def pause(multiplier):
+    time.sleep(multiplier * time_unit)
+
+def laser_flash(time_units):
     max_voltage()
     pause(time_units)
     min_voltage()
     pause(1)
 
-def pause(multiplier):
-    time.sleep(multiplier * time_unit)
-
 def character_to_morse(character):
     sequence = morse_characters.get(character)
-    for entry in sequence: 
+    for entry in sequence:
         laser_flash(binary_to_morse_timing.get(entry))
 
 morse_characters = {
@@ -62,12 +62,11 @@ morse_characters = {
     '9': [1, 1, 1, 1, 0], 
     '0': [1, 1, 1, 1, 1]}
 
-time_unit = 0.25
 
 binary_to_morse_timing = {0: 1, 1: 3}
 
-
 try:
+    time_unit = int(input("How long should one time unit last? Enter a number, each unit is one second.\n> "))
     while True:
         phrase = ((input("Input characters to be printed out\nCTRL + C to exit\n> ")).lower()).split(" ")
         for group in phrase: 
