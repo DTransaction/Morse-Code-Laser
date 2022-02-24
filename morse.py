@@ -11,15 +11,10 @@ def max_voltage(): GPIO.output(pins[0], GPIO.HIGH)
 def min_voltage(): GPIO.output(pins[0], GPIO.LOW)
 
 def laser_flash(time_units): 
-    try:
-        max_voltage()
-        pause(time_units)
-        min_voltage()
-        pause(1)
-    except Exception as E:
-        min_voltage()
-        GPIO.cleanup()
-        print(E)
+    max_voltage()
+    pause(time_units)
+    min_voltage()
+    pause(1)
 
 def pause(multiplier):
     time.sleep(multiplier * time_unit)
@@ -80,10 +75,9 @@ try:
             character_to_morse(character)
             pause(3)
         pause(7)
-except Exception as E:
+except KeyboardInterrupt:
     min_voltage()
     GPIO.cleanup()
-    print(E)
-
+    
 min_voltage()
 GPIO.cleanup()
