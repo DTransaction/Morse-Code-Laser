@@ -83,3 +83,6 @@ except Exception as E:
     print(E)
     min_voltage()
     GPIO.cleanup()
+
+min_voltage()
+GPIO.cleanup()
