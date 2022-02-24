@@ -66,18 +66,17 @@ time_unit = 0.25
 
 binary_to_morse_timing = {0: 1, 1: 3}
 
-phrase = ((input("Input characters to be printed out\n> ")).lower()).split(" ")
 
 try:
-    for group in phrase: 
-        for character in group:
-            print(character)
-            character_to_morse(character)
-            pause(3)
-        pause(7)
+    while True:
+        phrase = ((input("Input characters to be printed out\nCTRL + C to exit\n> ")).lower()).split(" ")
+        for group in phrase: 
+            for character in group:
+                print(character)
+                character_to_morse(character)
+                pause(3)
+            pause(7)
+            print("")
 except KeyboardInterrupt:
     min_voltage()
     GPIO.cleanup()
-    
-min_voltage()
-GPIO.cleanup()
