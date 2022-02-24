@@ -76,9 +76,9 @@ try:
             pause(3)
         pause(7)
 except Exception as E:
-    print(E)
     min_voltage()
     GPIO.cleanup()
+    print(E)
 
 min_voltage()
 GPIO.cleanup()
