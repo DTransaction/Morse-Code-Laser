@@ -72,7 +72,7 @@ morse_characters = {
     '0': [1, 1, 1, 1, 1]}
 
 
-test_phrase = "d d"
+test_phrase = "abc def"
 
 test_phrase = (test_phrase.lower()).split(" ")
 try:
