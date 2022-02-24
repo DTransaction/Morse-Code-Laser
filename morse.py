@@ -72,9 +72,8 @@ morse_characters = {
     '0': [1, 1, 1, 1, 1]}
 
 
-test_phrase = input("Input characters to be printed out\n> ")
+test_phrase = ((input("Input characters to be printed out\n> ")).lower()).split(" ")
 
-test_phrase = (test_phrase.lower()).split(" ")
 try:
     for group in test_phrase: 
         for character in group:
